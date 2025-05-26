@@ -27,7 +27,7 @@ def generate_index_html(folder):
             items.append(f'''
 <li>
   <a href="{name}">{name}</a>
-  <a class="download-btn" href="{name}" download>Download</a>
+  <a class="download-btn" href="{name}" download><i class="fa-solid fa-download"></i>Download</a>
 </li>
 ''')
 
@@ -76,7 +76,7 @@ def generate_index_html(folder):
       font-size: 0.9em;
       padding: 4px;
       color: rgb(68, 68, 68);
-      border-radius: 8px;
+      border-radius: 4px;
       box-shadow: 0px 4px 0px #63be45;
       font-family: Roboto, sans-serif;
       transition: 200ms ease;
@@ -90,6 +90,7 @@ def generate_index_html(folder):
       transform: translateY(2px);
     }}
   </style>
+  <script src="https://kit.fontawesome.com/0f7ac66354.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <h1>Location: {folder}</h1>
