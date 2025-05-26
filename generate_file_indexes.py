@@ -28,7 +28,7 @@ def generate_index_html(folder):
         else:
             items.append(f'''
 <li>
-  <a href="{name}"><i class="fa-solid fa-file"></i>&nbsp;&nbsp;{name}</a>
+  <a href="{name}"><i class="fa-solid fa-file"></i>&nbsp;&nbsp;&nbsp;{name}</a>
   <a class="download-btn" href="{name}" download><i class="fa-solid fa-download"></i>&nbsp;&nbsp;&nbsp;Download</a>
 </li>
 ''')
