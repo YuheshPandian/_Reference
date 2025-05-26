@@ -29,7 +29,7 @@ def generate_index_html(folder):
             items.append(f'''
 <li>
   <a href="{name}"><i class="fa-solid fa-file"></i>&nbsp;&nbsp;{name}</a>
-  <a class="download-btn" href="{name}" download><i class="fa-solid fa-download"></i>&nbsp;&nbsp;Download</a>
+  <a class="download-btn" href="{name}" download><i class="fa-solid fa-download"></i>&nbsp;&nbsp;&nbsp;Download</a>
 </li>
 ''')
 
@@ -38,7 +38,7 @@ def generate_index_html(folder):
 <head>
   <meta charset="UTF-8">
   <title>Yuhesh Pandian Reference Docs</title>
-  link
+  <link rel="icon" href="/images/logo.svg" type="image/svg+xml">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
@@ -77,7 +77,7 @@ def generate_index_html(folder):
       margin-left: 12px;
       background-color: rgb(168, 255, 168);
       font-size: 0.9em;
-      padding: 4px;
+      padding: 10px;
       color: rgb(68, 68, 68);
       border-radius: 4px;
       box-shadow: 0px 4px 0px #63be45;
