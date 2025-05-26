@@ -25,10 +25,10 @@ def generate_index_html(folder):
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Index of {folder}</title>
+  <title>Reference Docs from - {folder}</title>
 </head>
 <body>
-  <h1>Index of {folder}</h1>
+  <h1>Location: <b>{folder}</b></h1>
   <ul>
     {"".join(items)}
   </ul>
