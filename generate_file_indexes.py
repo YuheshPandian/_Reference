@@ -1,41 +1,46 @@
 import os
 
-EXCLUDED_DIRS = {".git", ".github", "__pycache__"}
+# Folders and files to ignore
+SKIP_DIRS = {".git", ".github", "__pycache__"}
+SKIP_FILES = {"generate_file_indexes.py", "index.html"}
 
 
-def generate_index(folder):
-    files = os.listdir(folder)
+def should_skip_dir(path):
+    """Check if the directory should be skipped based on folder names."""
+    return any(part in SKIP_DIRS for part in path.split(os.sep))
+
+
+def generate_index_html(folder):
+    """Create an index.html file listing all files and folders inside the given folder."""
     items = []
-
-    for file in sorted(files):
-        # Skip the index itself
-        if file == "index.html":
+    for item in sorted(os.listdir(folder)):
+        if item in SKIP_FILES:
             continue
-        path = os.path.join(folder, file)
-        display_name = file + "/" if os.path.isdir(path) else file
-        items.append(f'<li><a href="{file}">{display_name}</a></li>')
 
-    html_content = f"""<!DOCTYPE html>
+        full_path = os.path.join(folder, item)
+        display_name = item + "/" if os.path.isdir(full_path) else item
+        items.append(f'<li><a href="{item}">{display_name}</a></li>')
+
+    html = f"""<!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8"><title>Index of {folder}</title></head>
+<head>
+  <meta charset="UTF-8">
+  <title>Index of {folder}</title>
+</head>
 <body>
-<h1>Index of {folder}</h1>
-<ul>
-{"".join(items)}
-</ul>
+  <h1>Index of {folder}</h1>
+  <ul>
+    {"".join(items)}
+  </ul>
 </body>
-</html>"""
-
+</html>
+"""
     with open(os.path.join(folder, "index.html"), "w", encoding="utf-8") as f:
-        f.write(html_content)
+        f.write(html)
 
 
-def should_skip(path):
-    return any(excluded in path.split(os.sep) for excluded in EXCLUDED_DIRS)
-
-
-# Walk through all folders
+# Walk through each folder and generate index.html if allowed
 for root, dirs, files in os.walk("."):
-    if should_skip(root):
+    if should_skip_dir(root):
         continue
-    generate_index(root)
+    generate_index_html(root)
